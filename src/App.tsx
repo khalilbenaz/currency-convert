@@ -35,7 +35,7 @@ function saveFavorites(favs: FavoritePair[]): void {
 export default function App() {
   const [amount, setAmount] = useState<string>('1');
   const [from, setFrom] = useState<string>('EUR');
-  const [to, setTo] = useState<string>('MAD');
+  const [to, setTo] = useState<string>('USD');
 
   const [result, setResult] = useState<ConversionResult | null>(null);
   const [loadingConvert, setLoadingConvert] = useState(false);
@@ -60,7 +60,7 @@ export default function App() {
     setLoadingConvert(true);
     setErrorConvert(null);
     try {
-      const url = `https://api.frankfurter.app/latest?amount=${parsed}&from=${fromCode}&to=${toCode}`;
+      const url = `https://api.frankfurter.dev/v1/latest?amount=${parsed}&from=${fromCode}&to=${toCode}`;
       const res = await fetch(url);
       if (!res.ok) throw new Error(`Erreur HTTP ${res.status}`);
       const data = await res.json();
@@ -90,7 +90,7 @@ export default function App() {
     setErrorHistory(null);
     try {
       const start = get30DaysAgo();
-      const url = `https://api.frankfurter.app/${start}..?from=${fromCode}&to=${toCode}`;
+      const url = `https://api.frankfurter.dev/v1/${start}..?from=${fromCode}&to=${toCode}`;
       const res = await fetch(url);
       if (!res.ok) throw new Error(`Erreur HTTP ${res.status}`);
       const data = await res.json();

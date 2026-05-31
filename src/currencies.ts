@@ -1,11 +1,11 @@
 import type { Currency } from './types';
 
+// Devises suivies par l'API Frankfurter (taux de référence BCE).
 export const CURRENCIES: Currency[] = [
   { code: 'EUR', name: 'Euro' },
   { code: 'USD', name: 'Dollar américain' },
   { code: 'GBP', name: 'Livre sterling' },
   { code: 'JPY', name: 'Yen japonais' },
-  { code: 'MAD', name: 'Dirham marocain' },
   { code: 'CHF', name: 'Franc suisse' },
   { code: 'CAD', name: 'Dollar canadien' },
   { code: 'AUD', name: 'Dollar australien' },
@@ -22,16 +22,13 @@ export const CURRENCIES: Currency[] = [
   { code: 'MXN', name: 'Peso mexicain' },
   { code: 'ZAR', name: 'Rand sud-africain' },
   { code: 'TRY', name: 'Livre turque' },
-  { code: 'RUB', name: 'Rouble russe' },
   { code: 'PLN', name: 'Zloty polonais' },
   { code: 'CZK', name: 'Couronne tchèque' },
   { code: 'HUF', name: 'Forint hongrois' },
   { code: 'RON', name: 'Leu roumain' },
   { code: 'BGN', name: 'Lev bulgare' },
-  { code: 'HRK', name: 'Kuna croate' },
   { code: 'ISK', name: 'Couronne islandaise' },
-  { code: 'AED', name: 'Dirham des Émirats' },
-  { code: 'SAR', name: 'Riyal saoudien' },
+  { code: 'ILS', name: 'Shekel israélien' },
   { code: 'THB', name: 'Baht thaïlandais' },
   { code: 'IDR', name: 'Roupie indonésienne' },
   { code: 'MYR', name: 'Ringgit malaisien' },
