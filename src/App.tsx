@@ -60,17 +60,21 @@ export default function App() {
     setLoadingConvert(true);
     setErrorConvert(null);
     try {
-      const url = `https://api.frankfurter.dev/v1/latest?amount=${parsed}&from=${fromCode}&to=${toCode}`;
+      // open.er-api.com : gratuit, sans clé, ~160 devises (dont MAD)
+      const url = `https://open.er-api.com/v6/latest/${fromCode}`;
       const res = await fetch(url);
       if (!res.ok) throw new Error(`Erreur HTTP ${res.status}`);
       const data = await res.json();
-      const converted: number = data.rates[toCode];
+      if (data.result !== 'success' || !data.rates || typeof data.rates[toCode] !== 'number') {
+        throw new Error('Devise non disponible');
+      }
+      const rate: number = data.rates[toCode];
       setResult({
         amount: parsed,
         from: fromCode,
         to: toCode,
-        rate: converted / parsed,
-        convertedAmount: converted,
+        rate,
+        convertedAmount: parsed * rate,
       });
     } catch (err) {
       setErrorConvert('Impossible de récupérer le taux. Vérifiez votre connexion.');
@@ -84,6 +88,14 @@ export default function App() {
   const doHistory = useCallback(async (fromCode: string, toCode: string) => {
     if (fromCode === toCode) {
       setHistory([]);
+      return;
+    }
+    // L'historique vient de Frankfurter (taux BCE) : indisponible pour les autres devises (ex. MAD).
+    const ECB = new Set(['EUR','USD','JPY','BGN','CZK','DKK','GBP','HUF','PLN','RON','SEK','CHF','ISK','NOK','TRY','AUD','BRL','CAD','CNY','HKD','IDR','ILS','INR','KRW','MXN','MYR','NZD','PHP','SGD','THB','ZAR']);
+    if (!ECB.has(fromCode) || !ECB.has(toCode)) {
+      setHistory([]);
+      setErrorHistory(null);
+      setLoadingHistory(false);
       return;
     }
     setLoadingHistory(true);
