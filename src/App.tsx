@@ -179,7 +179,7 @@ export default function App() {
             Convertisseur de devises
           </h1>
         </div>
-        <p className="text-gray-500 text-sm">Taux en temps réel via Frankfurter • Gratuit • Sans clé API</p>
+        <p className="text-gray-500 text-sm">Taux en temps réel • Gratuit • Sans clé API • 160+ devises</p>
       </header>
 
       {/* Card */}
@@ -373,16 +373,24 @@ export default function App() {
 
       {/* Footer */}
       <footer className="mt-8 text-center text-xs text-gray-400">
-        Données fournies par{' '}
+        Taux via{' '}
         <a
-          href="https://www.frankfurter.app/"
+          href="https://www.exchangerate-api.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-indigo-400 transition-colors"
+        >
+          ExchangeRate-API
+        </a>{' '}
+        · Historique 30 j via{' '}
+        <a
+          href="https://frankfurter.dev/"
           target="_blank"
           rel="noopener noreferrer"
           className="underline hover:text-indigo-400 transition-colors"
         >
           Frankfurter
-        </a>{' '}
-        · Taux mis à jour quotidiennement par la BCE
+        </a>
       </footer>
     </div>
   );
