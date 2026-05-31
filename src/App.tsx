@@ -35,7 +35,7 @@ function saveFavorites(favs: FavoritePair[]): void {
 export default function App() {
   const [amount, setAmount] = useState<string>('1');
   const [from, setFrom] = useState<string>('EUR');
-  const [to, setTo] = useState<string>('USD');
+  const [to, setTo] = useState<string>('MAD');
 
   const [result, setResult] = useState<ConversionResult | null>(null);
   const [loadingConvert, setLoadingConvert] = useState(false);
