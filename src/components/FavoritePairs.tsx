@@ -23,18 +23,18 @@ export default function FavoritePairs({ favorites, onSelect, onRemove }: Favorit
         {favorites.map((pair) => (
           <div
             key={`${pair.from}-${pair.to}`}
-            className="flex items-center gap-1 bg-indigo-50 border border-indigo-200 rounded-full px-3 py-1"
+            className="flex items-center gap-1 bg-indigo-50 border border-indigo-200 rounded-full pl-3 pr-1.5 py-1"
           >
             <button
               onClick={() => onSelect(pair)}
-              className="text-sm font-medium text-indigo-700 hover:text-indigo-900 transition-colors"
+              className="text-sm font-medium text-indigo-700 hover:text-indigo-900 transition-colors rounded focus:outline-none focus:ring-2 focus:ring-indigo-400"
               aria-label={`Sélectionner ${pair.from} vers ${pair.to}`}
             >
               {pair.from} → {pair.to}
             </button>
             <button
               onClick={() => onRemove(pair)}
-              className="text-indigo-400 hover:text-red-500 transition-colors ml-1 leading-none"
+              className="flex items-center justify-center w-5 h-5 rounded-full text-indigo-400 hover:text-red-500 hover:bg-red-50 transition-colors leading-none focus:outline-none focus:ring-2 focus:ring-red-300"
               aria-label={`Supprimer ${pair.from} vers ${pair.to} des favoris`}
             >
               ×

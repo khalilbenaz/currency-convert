@@ -44,7 +44,7 @@ export default function Sparkline({ data, width = 400, height = 100 }: Sparkline
   return (
     <div className="w-full overflow-x-auto">
       <svg
-        viewBox={`0 0 ${width} ${height + 20}`}
+        viewBox={`0 -8 ${width} ${height + 28}`}
         className="w-full"
         style={{ minWidth: 240 }}
         aria-label="Évolution du taux sur 30 jours"

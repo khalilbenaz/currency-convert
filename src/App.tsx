@@ -205,9 +205,9 @@ export default function App() {
         </div>
 
         {/* Currency selectors */}
-        <div className="flex items-end gap-3">
+        <div className="flex flex-col sm:flex-row sm:items-end gap-3 sm:gap-3">
           {/* Source */}
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             <label htmlFor="from" className="block text-sm font-medium text-gray-700 mb-1">
               Devise source
             </label>
@@ -215,7 +215,7 @@ export default function App() {
               id="from"
               value={from}
               onChange={(e) => setFrom(e.target.value)}
-              className="w-full border border-gray-200 rounded-xl px-3 py-3 text-sm font-medium text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-400 transition cursor-pointer"
+              className="w-full border border-gray-200 rounded-xl px-3 py-3 text-sm font-medium text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-400 transition cursor-pointer truncate"
               aria-label="Devise source"
             >
               {CURRENCIES.map((c) => (
@@ -227,10 +227,10 @@ export default function App() {
           </div>
 
           {/* Swap button */}
-          <div className="flex-shrink-0 pb-0.5">
+          <div className="flex-shrink-0 flex justify-center sm:block sm:pb-1">
             <button
               onClick={handleSwap}
-              className="w-11 h-11 flex items-center justify-center rounded-full bg-indigo-100 hover:bg-indigo-200 text-indigo-600 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              className="w-11 h-11 flex items-center justify-center rounded-full bg-indigo-100 hover:bg-indigo-200 active:scale-95 text-indigo-600 transition focus:outline-none focus:ring-2 focus:ring-indigo-400 sm:rotate-0 rotate-90"
               aria-label="Échanger les devises"
               title="Échanger"
             >
@@ -241,7 +241,7 @@ export default function App() {
           </div>
 
           {/* Target */}
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             <label htmlFor="to" className="block text-sm font-medium text-gray-700 mb-1">
               Devise cible
             </label>
@@ -249,7 +249,7 @@ export default function App() {
               id="to"
               value={to}
               onChange={(e) => setTo(e.target.value)}
-              className="w-full border border-gray-200 rounded-xl px-3 py-3 text-sm font-medium text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-400 transition cursor-pointer"
+              className="w-full border border-gray-200 rounded-xl px-3 py-3 text-sm font-medium text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-400 transition cursor-pointer truncate"
               aria-label="Devise cible"
             >
               {CURRENCIES.map((c) => (
@@ -302,12 +302,12 @@ export default function App() {
             <p className="text-red-600 text-sm font-medium">{errorConvert}</p>
           )}
           {!loadingConvert && !errorConvert && result && from !== to && (
-            <div className="space-y-1">
-              <p className="text-3xl font-bold text-indigo-700">
+            <div className="space-y-1 min-w-0">
+              <p className="text-3xl font-bold text-indigo-700 break-words leading-tight">
                 {formatNumber(result.convertedAmount, 2)}{' '}
                 <span className="text-xl text-indigo-500">{to}</span>
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 break-words">
                 {formatNumber(result.amount, 2)} {fromCurrency?.name ?? from} →{' '}
                 {toCurrency?.name ?? to}
               </p>
